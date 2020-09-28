@@ -7,7 +7,7 @@ using System.Windows.Forms;
 
 namespace newLive
 {
-     class Unit
+    public class Unit 
     {
         Random random = new Random();
         public int X { get; set; } = 0;
@@ -22,7 +22,8 @@ namespace newLive
         }
         public Pair<int, int> GetNewUnitPosition(int cols, int rows)
         {
-            Random random = new Random();
+            Random random = new Random((int)DateTime.Now.Ticks);
+
             int side = random.Next(8);
             switch (side)
             {
@@ -92,7 +93,7 @@ namespace newLive
         private int _rows;
         private int _cols;
         private List<Unit> people = new List<Unit>();
-        Random random = new Random();
+        Random random = new Random((int)DateTime.Now.Ticks);
         public GameEngine(int rows, int cols)
         {
             this._cols = cols;
@@ -132,4 +133,5 @@ namespace newLive
             Second = second;
         }
     }
+
 }

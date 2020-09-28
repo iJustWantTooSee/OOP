@@ -54,7 +54,7 @@ namespace newLive
 
             foreach (var item in people)
             {
-                graphics.FillRectangle(Brushes.Black, item.First*3, item.Second * 3, 3, 3);
+                graphics.FillRectangle(Brushes.Black, item.First*3, item.Second*3, 3, 3);
             }
             pictureBox1.Refresh();
         }
