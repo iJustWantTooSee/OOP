@@ -10,72 +10,72 @@ namespace newLive
      class Unit
     {
         Random random = new Random();
-        public int x { get; set; } = 0;
-        public int y { get; set; } = 0;
-        public int size { get; set; } = 0;
+        public int X { get; set; } = 0;
+        public int Y { get; set; } = 0;
+        public int Step { get; set; } = 0;
 
-        public Unit(int x, int y, int size)
+        public Unit(int x, int y, int step)
         {
-            this.x = x;
-            this.y = y;
-            this.size = size;
+            X = x;
+            Y = y;
+            Step = step;
         }
-        public Pair<int, int> moveUnit(int cols, int rows)
+        public Pair<int, int> GetNewUnitPosition(int cols, int rows)
         {
             Random random = new Random();
             int side = random.Next(8);
             switch (side)
             {
                 case 0:
-                    if (y - size > 1)
+                    if (Y - Step > 1)
                     {
-                        y = y - size - 1;
+                        Y = Y - Step - 1;
                     }
                     break;
                 case 1:
-                    if (y + size < cols - 1)
+                    if (Y + Step < cols - 1)
                     {
-                        y += size + 1;
+                        Y += Step + 1;
                     }
                     break;
                 case 2:
-                    if (x - size > 1)
+                    if (X - Step > 1)
                     {
-                        x = x - size - 1;
+                        X = X - Step - 1;
                     }
                     break;
                 case 3:
-                    if (x + size < rows - 1)
+                    if (X + Step < rows - 1)
                     {
-                        x += size + 1;
+                        X += Step + 1;
                     }
                     break;
                 case 4:
-                    if (x + size < rows - 1 && y + size < cols - 1)
+                    if (X + Step < rows - 1 && Y + Step < cols - 1)
                     {
-                        x += size + 1;
-                        y += size + 1;
+                        X += Step + 1;
+                        Y += Step + 1;
                     }
                     break;
                 case 5:
-                    if (x + size < rows - 1 && y - size > 1)
+                    if (X + Step < rows - 1 && Y - Step > 1)
                     {
-                        x += size + 1;
-                        y = y - size - 1; ;
+                        X += Step + 1;
+                        Y = Y - Step - 1; ;
                     }
                     break;
                 case 6:
-                    if (x - size > 1 && y + size < cols - 1)
+                    if (X - Step > 1 && Y + Step < cols - 1)
                     {
-                        x = x - size - 1;
-                        y += size + 1;
+                        X = X - Step - 1;
+                        Y += Step + 1;
                     }
                     break;
                 case 7:
-                    if (x - size > 1 && y - size > 1)
+                    if (X - Step > 1 && Y - Step > 1)
                     {
-                        x = x - size - 1;
-                        y = y - size - 1;
+                        X = X - Step - 1;
+                        Y = Y - Step - 1;
                     }
                     break;
 
@@ -83,20 +83,20 @@ namespace newLive
                 default:
                     break;
             }
-            return new Pair<int, int>(x, y);
+            return new Pair<int, int>(X, Y);
         }
 
     }
     public class GameEngine
     {
-        private int rows;
-        private int cols;
+        private int _rows;
+        private int _cols;
         private List<Unit> people = new List<Unit>();
         Random random = new Random();
         public GameEngine(int rows, int cols)
         {
-            this.cols = cols;
-            this.rows = rows;
+            this._cols = cols;
+            this._rows = rows;
             for (int i = 0; i < cols; i++)
             {
                 for (int j = 0; j < rows; j++)
@@ -115,7 +115,7 @@ namespace newLive
             List<Pair<int, int>> temp = new List<Pair<int, int> > ();
             foreach (var item in people)
             {
-                Pair<int, int> newLocation = item.moveUnit(cols, rows);
+                Pair<int, int> newLocation = item.GetNewUnitPosition(_cols, _rows);
                 temp.Add(newLocation);
             }
             return temp;
