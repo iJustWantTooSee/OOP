@@ -30,6 +30,11 @@
         {
             this.components = new System.ComponentModel.Container();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.button6 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.currentSpeedLife = new System.Windows.Forms.NumericUpDown();
             this.label3 = new System.Windows.Forms.Label();
@@ -41,11 +46,7 @@
             this.buttonStart = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.timer2 = new System.Windows.Forms.Timer(this.components);
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
+            this.button7 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -66,6 +67,8 @@
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.button7);
+            this.splitContainer1.Panel1.Controls.Add(this.button6);
             this.splitContainer1.Panel1.Controls.Add(this.button4);
             this.splitContainer1.Panel1.Controls.Add(this.button5);
             this.splitContainer1.Panel1.Controls.Add(this.button3);
@@ -88,14 +91,66 @@
             this.splitContainer1.SplitterDistance = 131;
             this.splitContainer1.TabIndex = 0;
             // 
+            // button6
+            // 
+            this.button6.BackColor = System.Drawing.SystemColors.Control;
+            this.button6.Location = new System.Drawing.Point(-2, 301);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(131, 24);
+            this.button6.TabIndex = 13;
+            this.button6.Text = "Щелчок Таноса";
+            this.button6.UseVisualStyleBackColor = false;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(-2, 273);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(131, 24);
+            this.button4.TabIndex = 12;
+            this.button4.Text = "Удалить Траву";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.buttonDelGrass_Click);
+            // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(-2, 244);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(131, 24);
+            this.button5.TabIndex = 11;
+            this.button5.Text = "Удалить Юнита";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.buttonDelUnit_Click);
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(-2, 215);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(131, 23);
+            this.button3.TabIndex = 10;
+            this.button3.Text = "Добавить Траву";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(-2, 186);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(131, 23);
+            this.button2.TabIndex = 9;
+            this.button2.Text = "Добавить Юнита";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(6, 345);
+            this.label4.Location = new System.Drawing.Point(5, 389);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(83, 65);
+            this.label4.Size = new System.Drawing.Size(100, 117);
             this.label4.TabIndex = 8;
-            this.label4.Text = "Юнит: \r\nГендер: \r\nКоордината X: \r\nКоордината Y: \r\nСытость: ";
+            this.label4.Text = "Юнит: \r\nГендер: \r\nКоордината X: \r\nКоордината Y: \r\nСытость: \r\nЕда добавляет:\r\nРазм" +
+    "ножение КД:\r\nДом:\r\nПартнёр: \r\n";
             // 
             // currentSpeedLife
             // 
@@ -143,11 +198,11 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(5, 328);
+            this.label2.Location = new System.Drawing.Point(5, 358);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(77, 13);
+            this.label2.Size = new System.Drawing.Size(88, 26);
             this.label2.TabIndex = 4;
-            this.label2.Text = "Period of life: 0";
+            this.label2.Text = "Season: summer \r\nPeriod of life: 0\r\n";
             // 
             // scalingFactor
             // 
@@ -217,50 +272,16 @@
             this.timer1.Interval = 500;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // timer2
+            // button7
             // 
-            this.timer2.Interval = 800;
-            this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(-2, 186);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(131, 23);
-            this.button2.TabIndex = 9;
-            this.button2.Text = "Добавить Юнита";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(-2, 215);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(131, 23);
-            this.button3.TabIndex = 10;
-            this.button3.Text = "Добавить Траву";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
-            // 
-            // button4
-            // 
-            this.button4.Location = new System.Drawing.Point(-2, 273);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(131, 24);
-            this.button4.TabIndex = 12;
-            this.button4.Text = "Удалить Траву";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.buttonDelGrass_Click);
-            // 
-            // button5
-            // 
-            this.button5.Location = new System.Drawing.Point(-2, 244);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(131, 24);
-            this.button5.TabIndex = 11;
-            this.button5.Text = "Удалить Юнита";
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.buttonDelUnit_Click);
+            this.button7.BackColor = System.Drawing.SystemColors.Control;
+            this.button7.Location = new System.Drawing.Point(-2, 331);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(131, 24);
+            this.button7.TabIndex = 14;
+            this.button7.Text = "Информация о доме";
+            this.button7.UseVisualStyleBackColor = false;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
             // Form1
             // 
@@ -290,7 +311,6 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button buttonStop;
         private System.Windows.Forms.Timer timer1;
-        private System.Windows.Forms.Timer timer2;
         private System.Windows.Forms.NumericUpDown scalingFactor;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
@@ -302,6 +322,8 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button button7;
     }
 }
 

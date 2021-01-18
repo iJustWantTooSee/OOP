@@ -22,6 +22,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <LangVersion>8.0</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -31,10 +32,17 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <LangVersion>8.0</LangVersion>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="MoreLinq, Version=3.3.2.0, Culture=neutral, PublicKeyToken=384d532d7e88985d, processorArchitecture=MSIL">
+      <HintPath>packages\morelinq.3.3.2\lib\net451\MoreLinq.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -46,6 +54,33 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Buildings\Barn.cs" />
+    <Compile Include="Buildings\Construction.cs" />
+    <Compile Include="Buildings\House.cs" />
+    <Compile Include="Cell.cs" />
+    <Compile Include="enum\season.cs" />
+    <Compile Include="Icon\Photo.cs" />
+    <Compile Include="interface\Herbivorous\IEdibleForHerbivorous.cs" />
+    <Compile Include="interface\Herbivorous\IEdibleForMoose.cs" />
+    <Compile Include="interface\Herbivorous\IEdibleForMouse.cs" />
+    <Compile Include="interface\Herbivorous\IEdibleForRabbit.cs" />
+    <Compile Include="interface\IExtractionForWoman.cs" />
+    <Compile Include="interface\IExtractionForMan.cs" />
+    <Compile Include="interface\Omnivorous\IEdibleForBear.cs" />
+    <Compile Include="interface\Omnivorous\IEdibleForHuman.cs" />
+    <Compile Include="interface\Omnivorous\IEdibleForPig.cs" />
+    <Compile Include="interface\Omnivorous\IEdibleForPaccoon.cs" />
+    <Compile Include="interface\Omnivorous\IEdibleForOmnivorous.cs" />
+    <Compile Include="interface\Predatory\IEdibleForFox.cs" />
+    <Compile Include="interface\Predatory\IEdibleForLion.cs" />
+    <Compile Include="interface\Predatory\IEdibleForWolf.cs" />
+    <Compile Include="interface\Predatory\IEdibleForPredatory.cs" />
+    <Compile Include="Organism\Omnivorous\People\Man.cs" />
+    <Compile Include="Organism\Omnivorous\People\Woman.cs" />
+    <Compile Include="Organism\UnitWithoutGeneric.cs" />
+    <Compile Include="PerlinNoise.cs" />
+    <Compile Include="Plants\Grass.cs" />
+    <Compile Include="interface\Edible.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -53,8 +88,26 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="GameEngine.cs" />
+    <Compile Include="enum\gender.cs" />
+    <Compile Include="Plants\Apple.cs" />
+    <Compile Include="Plants\Avena.cs" />
+    <Compile Include="Organism\Omnivorous\Bear.cs" />
+    <Compile Include="Plants\Carrot.cs" />
+    <Compile Include="Organism\Predatory\Fox.cs" />
+    <Compile Include="Organism\Predatory\Lion.cs" />
+    <Compile Include="Organism\Herbivorous\Moose.cs" />
+    <Compile Include="Organism\Herbivorous\Mouse.cs" />
+    <Compile Include="Organism\Omnivorous\Pig.cs" />
+    <Compile Include="Organism\Herbivorous\Rabbit.cs" />
+    <Compile Include="Organism\Omnivorous\Raccoon.cs" />
+    <Compile Include="Organism\Predatory\Wolf.cs" />
+    <Compile Include="Organism\Herbivorous\Herbivorous.cs" />
     <Compile Include="Map.cs" />
     <Compile Include="Meal.cs" />
+    <Compile Include="Organism\Omnivorous\People\Human.cs" />
+    <Compile Include="Organism\Omnivorous\Omnivorous.cs" />
+    <Compile Include="GameObject.cs" />
+    <Compile Include="Organism\Predatory\Predatory.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resource1.Designer.cs">
@@ -62,7 +115,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resource1.resx</DependentUpon>
     </Compile>
-    <Compile Include="Unit.cs" />
+    <Compile Include="enum\stateButton.cs" />
+    <Compile Include="enum\statepoint.cs" />
+    <Compile Include="Organism\Unit.cs" />
+    <Compile Include="Resources\Tree.cs" />
+    <Compile Include="Sounds\Sounds.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -79,6 +136,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resource1.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -91,9 +149,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\shreak.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
